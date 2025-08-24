@@ -54,8 +54,7 @@ void PrintRoots (int nSolve, double x1, double x2)
 
 void InputValues (double* a, double* b, double* c)
 {
-    assert(a != 0);
-
+    // assert(a != 0);
     printf("a: ");
     CheckInput(a, 'a');
     printf("b: ");
