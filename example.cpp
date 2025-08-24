@@ -2,15 +2,16 @@
 #include <stdio.h>
 #include <math.h>
 
-int Solve(double a, double b, double c, double* x1, double* x2);
-int LinearEquation (double b, double c, double* x1, double* x2);
-int SquareEquation (double a, double b, double c, double* x1, double* x2);
-int OneTest( double Definite_a, double Definite_b, double Definite_c, int Correct_nRoots, double Correct_x1, double Correct_x2);
-void PrintNumberRoots (int nSolve);
-void InputValues (double* a, double* b, double* c);
+int Solve( const double a, const double b, const double c, double* x1, double* x2);
+int LinearEquation ( const double b, const double c, double* x1, double* x2);
+int SquareEquation ( const double a, const double b, const double c, double* x1, double* x2);
+int ComparisonDouble( const double First, const double Twice);
+void OneTest( const double Definite_a, const double Definite_b, const double Definite_c, const int Correct_nRoots, const double Correct_x1, const double Correct_x2);
+void PrintNumberRoots ( const int nSolve);
+void InputValues ( double* a, double* b, double* c);
 void End (int* AnsUser);
-void PrintRoots (int nSolve, double x1, double x2);
-void CheckInput(double* Coefficient, char c);
+void PrintRoots ( const int nSolve, const double x1, const double x2);
+void CheckInput( double* Coefficient, char c);
 void BufferCleaning ();
 void Testing();
 
@@ -30,21 +31,21 @@ int main()
     int AnsUser=1;
     while (AnsUser != 0)
     {
-        InputValues(0, &b, &c);
+        InputValues(&a, &b, &c);
         nSolve = Solve(a, b, c, &x1, &x2);
         PrintNumberRoots(nSolve);
         PrintRoots(nSolve, x1, x2);
         End(&AnsUser);
     }
-    printf("Пока!\n");
+    printf("Пока!\n\n");
     return 0;
 }
 
-void PrintRoots (int nSolve, double x1, double x2)
+void PrintRoots ( const int nSolve, const double x1, const double x2)
 {
     if (nSolve == 2)
     {
-        printf("x1 = %lg x2 = %lg\n\n", x1, x2);
+        printf("x1 = %lg;   x2 = %lg\n\n", x1, x2);
     }
     if (nSolve == 1)
     {
@@ -52,7 +53,7 @@ void PrintRoots (int nSolve, double x1, double x2)
     }
 }
 
-void InputValues (double* a, double* b, double* c)
+void InputValues ( double* a, double* b, double* c)
 {
     // assert(a != 0);
     printf("a: ");
@@ -63,7 +64,7 @@ void InputValues (double* a, double* b, double* c)
     CheckInput(c, 'c');
 }
 
-void CheckInput(double* Coefficient, char c)
+void CheckInput( double* Coefficient, char c)
 {
     while (scanf("%lf", Coefficient) != 1)
     {
@@ -80,7 +81,7 @@ void BufferCleaning ()
     }
 }
 
-void PrintNumberRoots (int nSolve)
+void PrintNumberRoots (const int nSolve)
 {
     if (nSolve == INFINITE_ROOTS)
     {
@@ -112,16 +113,26 @@ void End(int* AnsUser)
 
 void Testing()
 {
-    printf("%d\n", OneTest( 1, -5, 6, 2, 3, 2));
-    printf("%d\n", OneTest( 1, 0, -4, 2, 2, -2));
+    //Нужно вводить корни в порядке убывания;(
+    OneTest( 1, -5, 6, 2, 3, 2);
+    OneTest( 1, 0, -4, 2, 2, -2);
 }
 
-int OneTest( double Definite_a, double Definite_b, double Definite_c, int Correct_nRoots, double Correct_x1, double Correct_x2)
+void OneTest( const double Definite_a, const double Definite_b, const double Definite_c, const int Correct_nRoots, const double Correct_x1, const double Correct_x2)
 {
     double Empty_x1 = 0, Empty_x2 = 0;
     int nRoots = 0;
     nRoots=Solve( Definite_a, Definite_b, Definite_c, &Empty_x1, &Empty_x2);
-    if ( fabs(Empty_x1 - Correct_x1) < EPSILON && fabs(Empty_x2 - Correct_x2) < EPSILON && nRoots == Correct_nRoots)
+    if (!( ComparisonDouble( Empty_x1, Correct_x1) == 1 && ComparisonDouble( Empty_x2, Correct_x2) == 1 && nRoots == Correct_nRoots))
+    {
+        printf("Ошибка в тесте!\nКоэффициенты уравнения: %lg, %lg, %lg \nСколько должно было получиться корней: %d \nСколько программа получила корней: %d \nКакие корни должны были получиться: %lg, %lg \nКакие корни получила программа: %lg, %lg \n\n", Definite_a, Definite_b, Definite_c, Correct_nRoots, nRoots, Correct_x1, Correct_x2, Empty_x1, Empty_x2);
+    }
+
+}
+
+int ComparisonDouble( const double First, const double Twice)
+{
+    if (fabs(First - Twice) < EPSILON)
     {
         return 1;
     }
@@ -129,16 +140,15 @@ int OneTest( double Definite_a, double Definite_b, double Definite_c, int Correc
     {
         return 0;
     }
-
 }
 
-int Solve( double a, double b, double c, double* x1, double* x2)
+int Solve( const double a, const double b, const double c, double* x1, double* x2)
 {
-    if (fabs(a) < EPSILON)
+    if (ComparisonDouble( a, 0) == 1)
     {
-        if (fabs(b) < EPSILON)
+        if (ComparisonDouble( b, 0) == 1)
         {
-            if (fabs(c) < EPSILON)
+            if (ComparisonDouble( c, 0) == 1)
             {
                 return -1;
             }
@@ -159,7 +169,7 @@ int Solve( double a, double b, double c, double* x1, double* x2)
     }
 }
 
-int SquareEquation (double a, double b, double c, double* x1, double* x2)
+int SquareEquation ( const double a, const double b, const double c, double* x1, double* x2)
 {
     double D;
     D = b*b - 4*a*c;
@@ -169,7 +179,7 @@ int SquareEquation (double a, double b, double c, double* x1, double* x2)
         *x2 = (-b - sqrt(D)) / (2*a);
         return 2;
     }
-    if (fabs(D) < EPSILON)
+    if (ComparisonDouble( D, 0) == 1)
     {
         *x1 = *x2 = -b / 2*a;
         return 1;
@@ -180,7 +190,7 @@ int SquareEquation (double a, double b, double c, double* x1, double* x2)
     }
 }
 
-int LinearEquation (double b, double c, double* x1, double* x2)
+int LinearEquation ( const double b, const double c, double* x1, double* x2)
 {
     *x1 = *x2 = -c / b;
     return 1;
