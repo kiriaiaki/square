@@ -1,31 +1,34 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-#include "main.h"
+
 #include "test.h"
 #include "input.h"
 #include "print.h"
 #include "solution.h"
+#include "auxiliary_function.h"
 
 void Testing()
 {
-    //Нужно вводить корни в порядке убывания;(
+    // TODO: добавить больше тестов и структуры
     OneTest( 1, -5,  6, 2, 3,  2);
     OneTest( 1,  0, -4, 2, 2, -2);
 }
 
-void OneTest(const double Definite_a, const double Definite_b, const double Definite_c,
-    const int Correct_nRoots, const double Correct_x1, const double Correct_x2)
+void OneTest(const double Definite_A, const double Definite_B, const double Definite_C,
+    const int Correct_NRoots, const double Correct_X1, const double Correct_X2)
 {
-    double Empty_x1 = 0, Empty_x2 = 0;
-    int nRoots = 0;
-    assert(isfinite(Definite_a));
-    assert(isfinite(Definite_b));
-    assert(isfinite(Definite_c));
-    assert(isfinite(Correct_x1));
-    assert(isfinite(Correct_x2));
-    nRoots=Solve( Definite_a, Definite_b, Definite_c, &Empty_x1, &Empty_x2);
-    if (!( ComparisonDouble(Empty_x1, Correct_x1) && ComparisonDouble(Empty_x2, Correct_x2) && nRoots == Correct_nRoots))
+    double Empty_X1 = 0, Empty_X2 = 0;
+    int NRoots = 0;
+    assert(isfinite(Definite_A));
+    assert(isfinite(Definite_B));
+    assert(isfinite(Definite_C));
+    assert(isfinite(Correct_X1));
+    assert(isfinite(Correct_X2));
+    NRoots=Solve( Definite_A, Definite_B, Definite_C, &Empty_X1, &Empty_X2);
+    if (!( ComparisonDouble(Empty_X1, Correct_X1)
+        && ComparisonDouble(Empty_X2, Correct_X2)
+        && NRoots == Correct_NRoots))
     {
         printf("Ошибка в тесте!\n"
                "Коэффициенты уравнения: %lg, %lg, %lg \n"
@@ -33,9 +36,9 @@ void OneTest(const double Definite_a, const double Definite_b, const double Defi
                "Сколько программа получила корней: %d \n"
                "Какие корни должны были получиться: %lg, %lg \n"
                "Какие корни получила программа: %lg, %lg \n\n",
-               Definite_a, Definite_b, Definite_c,
-               Correct_nRoots, nRoots, Correct_x1,
-               Correct_x2, Empty_x1, Empty_x2);
+               Definite_A, Definite_B, Definite_C,
+               Correct_NRoots, NRoots,
+               Correct_X1, Correct_X2, Empty_X1, Empty_X2);
     }
 
 }

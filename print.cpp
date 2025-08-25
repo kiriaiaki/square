@@ -1,45 +1,48 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-#include "main.h"
+
 #include "test.h"
 #include "input.h"
 #include "print.h"
 #include "solution.h"
+#include "auxiliary_function.h"
 
-void PrintRoots (const int nSolve, const double x1, const double x2)
+void PrintRoots (const int NSolve, const double X1, const double X2)
 {
-    assert(isfinite(x1));
-    assert(isfinite(x2));
-    if (nSolve == 2)
+    if (NSolve == 2)
     {
-        printf("x1 = %lg;   x2 = %lg\n\n", x1, x2);
+        assert(isfinite(X1));
+        assert(isfinite(X2));
+        printf("x1 = %lg;   x2 = %lg\n\n", X1, X2);
     }
-    if (nSolve == 1)
+    if (NSolve == 1)
     {
-        printf("x1 = %lg\n\n", x1);
+        assert(isfinite(X1));
+        assert(ComparisonDouble(X1, X2));
+        printf("x1 = %lg\n\n", X1);
     }
 }
 
-void PrintNumberRoots (const int nSolve)
+void PrintNumberRoots (const int NSolve)
 {
-    if (nSolve == INFINITE_ROOTS)
+    if (NSolve == INFINITE_ROOTS)
     {
         printf("\n Уравнение имеет бесконечно много корней!\n\n");
     }
-    if (nSolve == IMPOSSIBLE_ROOTS)
+    if (NSolve == IMPOSSIBLE_ROOTS)
     {
         printf("\n Уравнение невозможно!\n\n");
     }
-    if (nSolve == ONE_ROOTS)
+    if (NSolve == ONE_ROOT)
     {
         printf("\n Уравнение имеет одно решение!\n\n");
     }
-    if (nSolve == TWO_ROOTS)
+    if (NSolve == TWO_ROOTS)
     {
         printf("\n Уравнение имеет два решения!\n\n");
     }
-    if (nSolve == ZERO_ROOTS)
+    if (NSolve == ZERO_ROOTS)
     {
         printf("\n Уравнение не имеет рациональных решений!\n\n");
     }

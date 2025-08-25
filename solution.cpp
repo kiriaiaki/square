@@ -1,76 +1,80 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-#include "main.h"
+
 #include "test.h"
 #include "input.h"
 #include "print.h"
 #include "solution.h"
+#include "auxiliary_function.h"
 
-int Solve(const double a, const double b, const double c, double* const x1, double* const x2)
+int Solve(const double A, const double B, const double C,
+    double* const X1, double* const X2)
 {
-    assert(isfinite(a));
-    assert(isfinite(b));
-    assert(isfinite(c));
-    assert(x1 != NULL);
-    assert(x2 != NULL);
-    if (ComparisonDouble(a, 0))
+    assert(isfinite(A));
+    assert(isfinite(B));
+    assert(isfinite(C));
+    assert(X1 != NULL);
+    assert(X2 != NULL);
+    if (ComparisonDouble(A, 0))
     {
-        if (ComparisonDouble(b, 0))
+        if (ComparisonDouble(B, 0))
         {
-            if (ComparisonDouble(c, 0))
+            if (ComparisonDouble(C, 0))
             {
-                return -1;
+                return INFINITE_ROOTS;
             }
             else
             {
-                return -2;
+                return IMPOSSIBLE_ROOTS;
             }
         }
         else
         {
-            return LinearEquation(b, c, x1, x2);
+            return LinearEquation(B, C, X1, X2);
         }
     }
     else
     {
-        return SquareEquation(a, b, c, x1, x2);
+        return SquareEquation(A, B, C, X1, X2);
 
     }
 }
 
-int SquareEquation (const double a, const double b, const double c, double* const x1, double* const x2)
+int SquareEquation (const double A, const double B, const double C,
+    double* const X1, double* const X2)
 {
-    assert(isfinite(a));
-    assert(isfinite(b));
-    assert(isfinite(c));
-    assert(x1 != NULL);
-    assert(x2 != NULL);
-    double D;
-    D = b*b - 4*a*c;
+    assert(isfinite(A));
+    assert(isfinite(B));
+    assert(isfinite(C));
+    assert(X1 != NULL);
+    assert(X2 != NULL);
+    const double D = B*B - 4*A*C;
     if (D > 0)
     {
-        *x1 = (-b + sqrt(D)) / (2*a);
-        *x2 = (-b - sqrt(D)) / (2*a);
-        return 2;
+        const double SqrtD = sqrt(D);
+        *X1 = (-B + SqrtD) / (2*A);
+        *X2 = (-B - SqrtD) / (2*A);
+        return TWO_ROOTS;
     }
     if (ComparisonDouble(D, 0))
     {
-        *x1 = *x2 = -b / 2*a;
-        return 1;
+        *X1 = *X2 = -B / (2*A);
+        return ONE_ROOT;
     }
     else
     {
-        return 0;
+        return ZERO_ROOTS;
     }
 }
 
-int LinearEquation (const double b, const double c, double* const x1, double* const x2)
+int LinearEquation (const double B, const double C,
+    double* const X1, double* const X2)
 {
-    assert(isfinite(b));
-    assert(isfinite(c));
-    assert(x1 != NULL);
-    assert(x2 != NULL);
-    *x1 = *x2 = -c / b;
-    return 1;
+    assert(isfinite(B));
+    assert(isfinite(C));
+    assert(X1 != NULL);
+    assert(X2 != NULL);
+    *X1 = *X2 = -C / B;
+    return ONE_ROOT;
 }

@@ -1,45 +1,44 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-#include "main.h"
+
 #include "test.h"
 #include "input.h"
 #include "print.h"
 #include "solution.h"
+#include "auxiliary_function.h"
 
-int InputValues (double* const a, double* const b, double* const c)
+int InputValues (double* const A, double* const B, double* const C)
 {
-    assert(a != NULL);
-    assert(b != NULL);
-    assert(c != NULL);
-    printf("a: ");
-    if (CheckInput(a, 'a') == EOF)
+    assert(A != NULL);
+    assert(B != NULL);
+    assert(C != NULL);
+    if (CheckInput(A, 'a') == EOF)
     {
         return EOF;
     }
-    printf("b: ");
-    if (CheckInput(b, 'b') == EOF)
+    if (CheckInput(B, 'b') == EOF)
     {
         return EOF;
     }
-    printf("c: ");
-    if (CheckInput(c, 'c') == EOF)
+    if (CheckInput(C, 'c') == EOF)
     {
         return EOF;
     }
     return SUCCESS;
 }
 
-int CheckInput(double* const Coefficient, const char c)
+int CheckInput(double* const Coefficient, const char Symbol)
 {
     assert(Coefficient != NULL);
+    printf("%c: ", Symbol);
     while (scanf("%lf", Coefficient) != 1)
     {
         if (BufferCleaning () == EOF)
         {
             return EOF;
         }
-        printf("Можно вводить только цифры, попробуй ещё раз\n%c: ", c);
+        printf("Можно вводить только цифры, попробуй ещё раз\n%c: ", Symbol);
     }
     return SUCCESS;
 }
