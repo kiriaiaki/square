@@ -8,7 +8,7 @@
 #include "solution.h"
 #include "auxiliary_function.h"
 
-int Solve(const double A, const double B, const double C,
+QuantityRoots Solve(const double A, const double B, const double C,
     double* const X1, double* const X2)
 {
     assert(isfinite(A));
@@ -41,7 +41,7 @@ int Solve(const double A, const double B, const double C,
     }
 }
 
-int SquareEquation (const double A, const double B, const double C,
+QuantityRoots SquareEquation (const double A, const double B, const double C,
     double* const X1, double* const X2)
 {
     assert(isfinite(A));
@@ -68,7 +68,7 @@ int SquareEquation (const double A, const double B, const double C,
     }
 }
 
-int LinearEquation (const double B, const double C,
+QuantityRoots LinearEquation (const double B, const double C,
     double* const X1, double* const X2)
 {
     assert(isfinite(B));

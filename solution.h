@@ -1,19 +1,23 @@
 #ifndef SOLUTION_H
 #define SOLUTION_H
 
-enum Name {
+enum QuantityRoots {
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
     TWO_ROOTS = 2,
     INFINITE_ROOTS = -1,
-    IMPOSSIBLE_ROOTS = -2
+    IMPOSSIBLE_ROOTS = -2,
+    NOT_INITIALIZED = -3,
 };
 
-int SquareEquation (const double A, const double B, const double C,
+// SolveSquareEquation
+QuantityRoots SquareEquation (const double A, const double B, const double C,
     double* const X1, double* const X2);
-int Solve (const double A, const double B, const double C,
+// SolveEquation
+QuantityRoots Solve (const double A, const double B, const double C,
     double* const X1, double* const X2);
-int LinearEquation (const double B, const double C,
+// SolveLinearEquation
+QuantityRoots LinearEquation (const double B, const double C,
     double* const X1, double* const X2);
 
 #endif

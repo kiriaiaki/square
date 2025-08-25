@@ -8,49 +8,57 @@
 #include "solution.h"
 #include "auxiliary_function.h"
 
-void PrintRoots (const int NSolve, const double X1, const double X2)
+void PrintRoots (const QuantityRoots NSolve, const double X1, const double X2)
 {
-    if (NSolve == 2)
+    switch (NSolve)
     {
-        assert(isfinite(X1));
-        assert(isfinite(X2));
-        printf("x1 = %lg;   x2 = %lg\n\n", X1, X2);
-    }
-    if (NSolve == 1)
-    {
-        assert(isfinite(X1));
-        assert(ComparisonDouble(X1, X2));
-        printf("x1 = %lg\n\n", X1);
+        case TWO_ROOTS:
+        {
+            assert(isfinite(X1));
+            assert(isfinite(X2));
+            printf("x1 = %lg;   x2 = %lg\n\n", X1, X2);
+            break;
+        }
+        case ONE_ROOT:
+        {
+            assert(isfinite(X1));
+            assert(ComparisonDouble(X1, X2));
+            printf("x1 = %lg\n\n", X1);
+            break;
+        }
+        case INFINITE_ROOTS:
+        case IMPOSSIBLE_ROOTS:
+        case ZERO_ROOTS:
+        case NOT_INITIALIZED:
+        default: break;
     }
 }
 
-void PrintNumberRoots (const int NSolve)
+void PrintNumberRoots (const QuantityRoots NSolve)
 {
-    if (NSolve == INFINITE_ROOTS)
+    switch (NSolve)
     {
-        printf("\n Уравнение имеет бесконечно много корней!\n\n");
-    }
-    if (NSolve == IMPOSSIBLE_ROOTS)
-    {
-        printf("\n Уравнение невозможно!\n\n");
-    }
-    if (NSolve == ONE_ROOT)
-    {
-        printf("\n Уравнение имеет одно решение!\n\n");
-    }
-    if (NSolve == TWO_ROOTS)
-    {
-        printf("\n Уравнение имеет два решения!\n\n");
-    }
-    if (NSolve == ZERO_ROOTS)
-    {
-        printf("\n Уравнение не имеет рациональных решений!\n\n");
+        case INFINITE_ROOTS: printf("\n Уравнение имеет бесконечно много корней!\n\n"); break;
+        case IMPOSSIBLE_ROOTS: printf("\n Уравнение невозможно!\n\n"); break;
+        case ONE_ROOT: printf("\n Уравнение имеет одно решение!\n\n"); break;
+        case TWO_ROOTS: printf("\n Уравнение имеет два решения!\n\n"); break;
+        case ZERO_ROOTS: printf("\n Уравнение не имеет рациональных решений!\n\n"); break;
+        case NOT_INITIALIZED:
+        default: break;
     }
 }
 
-void End(int* const AnsUser)
+// AskUserIntention
+int AskIntention(int* const AnsUser)
 {
     assert(AnsUser != NULL);
     printf(" Нажми 1, чтобы решить ёще уравнение или нажми 0, чтобы закончить\n");
-    scanf("%d", AnsUser);
+    if (CheckAnsUser (AnsUser) == EOF)
+    {
+        return EOF;
+    }
+    else
+    {
+        return SUCCESS;
+    }
 }

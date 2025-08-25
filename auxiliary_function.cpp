@@ -21,3 +21,4 @@ int ComparisonDouble(const double First, const double Twice)
         return 0;
     }
 }
+//CompareDouble

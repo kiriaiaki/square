@@ -8,6 +8,7 @@
 #include "solution.h"
 #include "auxiliary_function.h"
 
+// InputCoefficients
 int InputValues (double* const A, double* const B, double* const C)
 {
     assert(A != NULL);
@@ -28,6 +29,7 @@ int InputValues (double* const A, double* const B, double* const C)
     return SUCCESS;
 }
 
+// InputOnlyCoefficient
 int CheckInput(double* const Coefficient, const char Symbol)
 {
     assert(Coefficient != NULL);
@@ -43,18 +45,53 @@ int CheckInput(double* const Coefficient, const char Symbol)
     return SUCCESS;
 }
 
+// InputBufferClean
 int BufferCleaning ()
 {
     while (1)
     {
         int Symbol = getchar();
-        if (Symbol == -1)
+        if (Symbol == EOF)
         {
             return EOF;
         }
-        else if (Symbol == int('\n'))
+        else if (Symbol == (int)'\n')
         {
             return SUCCESS;
         }
     }
+}
+
+// InputIntentionChecked
+int CheckAnsUser (int* const AnsUser)
+{
+    assert(AnsUser != NULL);
+    while (1)
+    {
+        if (scanf("%d", AnsUser) != 1)
+        {
+            if (BufferCleaning () == EOF)
+            {
+                return EOF;
+            }
+            printf("Введи 0 или 1, попробуй ещё раз\n");
+        }
+        else
+        {
+            if (*AnsUser == 1 || *AnsUser == 0)
+            {
+                return SUCCESS;
+            }
+            else
+            {
+                printf("Введи 0 или 1, попробуй ещё раз\n");
+
+            }
+        }
+          // if (scanf("%d", AnsUser) == 1)
+        // {
+        //     printf("Введи 0 или 1, попробуй ещё раз\n");
+        //     continue;
+    }
+    return SUCCESS;
 }

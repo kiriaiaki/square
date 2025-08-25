@@ -15,21 +15,26 @@ int main()
            "Введи коэффициенты:\n\n");
     double A = NAN, B = NAN, C = NAN;
     double X1 = NAN, X2 = NAN;
-    int NSolve = INITIALIZATIONNSOLVE;
-    int AnsUser = 1;
+    QuantityRoots NSolve = NOT_INITIALIZED;
+    int AnsUser = -1;
     while (AnsUser != 0)
     {
         if (InputValues(&A, &B, &C) == EOF)
         {
-            break;
+            printf("\nПока!\n\n");
+            return EOF;
         }
         NSolve = Solve(A, B, C, &X1, &X2);
         PrintNumberRoots(NSolve);
         PrintRoots(NSolve, X1, X2);
-        End(&AnsUser);
+        if (AskIntention(&AnsUser) == EOF)
+        {
+            printf("\nПока!\n\n");
+            return EOF;
+        }
     }
     printf(" Нажми 1, если хочешь запустить тесты или нажми 0, чтобы закончить выполнение программы\n");
-    scanf("%d", &AnsUser);
+    CheckAnsUser(&AnsUser);
     if (AnsUser == 1)
     {
         Testing();
