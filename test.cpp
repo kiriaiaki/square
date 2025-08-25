@@ -1,8 +1,8 @@
-#include "exampl.h"
-#include "test.h"
-#include <math.h>
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
+#include <math.h>
+#include "example.h"
+#include "test.h"
 #include "input.h"
 
 void Testing()

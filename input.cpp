@@ -1,9 +1,9 @@
-#include "exampl.h"
+#include <assert.h>
+#include <stdio.h>
+#include <math.h>
+#include "example.h"
 #include "test.h"
 #include "input.h"
-#include <math.h>
-#include <stdio.h>
-#include <assert.h>
 
 int InputValues (double* const a, double* const b, double* const c)
 {

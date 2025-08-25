@@ -5,3 +5,4 @@ void PrintRoots (const int nSolve, const double x1, const double x2);
 int ComparisonDouble (const double First, const double Twice);
 void PrintNumberRoots (const int nSolve);
 void End (int* const AnsUser);
+const int SUCCESS = 3;
