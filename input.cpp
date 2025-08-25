@@ -1,9 +1,11 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-#include "example.h"
+#include "main.h"
 #include "test.h"
 #include "input.h"
+#include "print.h"
+#include "solution.h"
 
 int InputValues (double* const a, double* const b, double* const c)
 {
