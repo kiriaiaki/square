@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <assert.h>
+#include "input.h"
 
 void Testing()
 {
