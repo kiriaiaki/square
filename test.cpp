@@ -7,9 +7,8 @@
 void Testing()
 {
     //Нужно вводить корни в порядке убывания;(
-    OneTest( 1, -5,  6, 2, 2,  3);
+    OneTest( 1, -5,  6, 2, 3,  2);
     OneTest( 1,  0, -4, 2, 2, -2);
-    OneTest( 1,  0, -4, 2, -2, 2);
 }
 
 void OneTest(const double Definite_a, const double Definite_b, const double Definite_c,

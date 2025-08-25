@@ -10,6 +10,7 @@ int ONE_ROOTS = 1;
 int ZERO_ROOTS = 0;
 int INFINITE_ROOTS = -1;
 int IMPOSSIBLE_ROOTS = -2;
+int SUCCESS = 3;
 double EPSILON = 1e-7;
 
 int main()
@@ -18,13 +19,12 @@ int main()
            "Я программа для нахождения корней квадратного уравнения вида ax^2+bx+c=0\n"
            "Введи коэффициенты:\n\n");
     double a = NAN, b = NAN, c = NAN;
-    double x1 = NAN, x2 = NAN;
+    double x1 = 0, x2 = 0;
     int nSolve;
     int AnsUser = 1;
     while (AnsUser != 0)
     {
-        InputValues(&a, &b, &c);
-        if (InputValues(&a, &b, &c) == -1)
+        if (InputValues(&a, &b, &c) == EOF)
         {
             break;
         }
@@ -58,24 +58,21 @@ int InputValues (double* const a, double* const b, double* const c)
     assert(b != NULL);
     assert(c != NULL);
     printf("a: ");
-    // CheckInput(a, 'a');
-    if (CheckInput(a, 'a') == -1)
+    if (CheckInput(a, 'a') == EOF)
     {
-        return -1;
+        return EOF;
     }
     printf("b: ");
-    // CheckInput(b, 'b');
-    if (CheckInput(b, 'b') == -1)
+    if (CheckInput(b, 'b') == EOF)
     {
-        return -1;
+        return EOF;
     }
     printf("c: ");
-    // CheckInput(c, 'c');
-    if (CheckInput(c, 'c') == -1)
+    if (CheckInput(c, 'c') == EOF)
     {
-        return -1;
+        return EOF;
     }
-    return 0;
+    return SUCCESS;
 }
 
 int CheckInput(double* const Coefficient, const char c)
@@ -83,27 +80,29 @@ int CheckInput(double* const Coefficient, const char c)
     assert(Coefficient != NULL);
     while (scanf("%lf", Coefficient) != 1)
     {
-        BufferCleaning ();
-        if (BufferCleaning () == -1)
+        if (BufferCleaning () == EOF)
         {
-            return -1;
+            return EOF;
         }
         printf("Можно вводить только цифры, попробуй ещё раз\n%c: ", c);
     }
-    return 0;
+    return SUCCESS;
 }
 
 int BufferCleaning ()
 {
-    if (getchar() == -1)
+    while (1)
     {
-        return EOF;
+        int Symbol = getchar();
+        if (Symbol == -1)
+        {
+            return EOF;
+        }
+        else if (Symbol == int('\n'))
+        {
+            return SUCCESS;
+        }
     }
-    while (getchar() != '\n')
-    {
-        continue;
-    }
-    return 0;
 }
 
 void PrintNumberRoots (const int nSolve)
