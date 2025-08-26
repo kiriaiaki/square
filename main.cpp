@@ -1,12 +1,8 @@
-#include <assert.h>
 #include <stdio.h>
-#include <math.h>
 
 #include "test.h"
-#include "input.h"
-#include "print.h"
+#include "input_output.h"
 #include "solution.h"
-#include "auxiliary_function.h"
 
 int main()
 {
@@ -19,25 +15,25 @@ int main()
     int AnsUser = -1;
     while (AnsUser != 0)
     {
-        if (InputValues(&A, &B, &C) == EOF)
+        if (InputCoefficients (&A, &B, &C) == EOF)
         {
             printf("\nПока!\n\n");
             return EOF;
         }
-        NSolve = Solve(A, B, C, &X1, &X2);
-        PrintNumberRoots(NSolve);
-        PrintRoots(NSolve, X1, X2);
-        if (AskIntention(&AnsUser) == EOF)
+        NSolve = SolveEquation (A, B, C, &X1, &X2);
+        PrintNumberRoots (NSolve);
+        PrintRoots (NSolve, X1, X2);
+        if (AskUserIntention (&AnsUser) == EOF)
         {
             printf("\nПока!\n\n");
             return EOF;
         }
     }
     printf(" Нажми 1, если хочешь запустить тесты или нажми 0, чтобы закончить выполнение программы\n");
-    CheckAnsUser(&AnsUser);
+    AskUserIntention (&AnsUser);
     if (AnsUser == 1)
     {
-        Testing();
+        Testing ();
     }
     printf("\nПока!\n\n");
     return 0;

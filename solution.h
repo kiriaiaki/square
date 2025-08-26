@@ -1,6 +1,11 @@
 #ifndef SOLUTION_H
 #define SOLUTION_H
 
+#include <assert.h>
+#include <math.h>
+
+#include "auxiliary_function.h"
+
 enum QuantityRoots {
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
@@ -10,14 +15,13 @@ enum QuantityRoots {
     NOT_INITIALIZED = -3,
 };
 
-// SolveSquareEquation
-QuantityRoots SquareEquation (const double A, const double B, const double C,
-    double* const X1, double* const X2);
-// SolveEquation
-QuantityRoots Solve (const double A, const double B, const double C,
-    double* const X1, double* const X2);
-// SolveLinearEquation
-QuantityRoots LinearEquation (const double B, const double C,
+QuantityRoots SolveSquareEquation (const double A, const double B, const double C,
     double* const X1, double* const X2);
 
-#endif
+QuantityRoots SolveEquation (const double A, const double B, const double C,
+    double* const X1, double* const X2);
+
+QuantityRoots SolveLinearEquation (const double B, const double C,
+    double* const X1, double* const X2);
+
+#endif // SOLUTION_H

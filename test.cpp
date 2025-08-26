@@ -1,12 +1,4 @@
-#include <assert.h>
-#include <stdio.h>
-#include <math.h>
-
 #include "test.h"
-#include "input.h"
-#include "print.h"
-#include "solution.h"
-#include "auxiliary_function.h"
 
 void Testing()
 {
@@ -25,9 +17,9 @@ void OneTest(const double Definite_A, const double Definite_B, const double Defi
     assert(isfinite(Definite_C));
     assert(isfinite(Correct_X1));
     assert(isfinite(Correct_X2));
-    NRoots = Solve( Definite_A, Definite_B, Definite_C, &Empty_X1, &Empty_X2);
-    if (!( ComparisonDouble(Empty_X1, Correct_X1)
-        && ComparisonDouble(Empty_X2, Correct_X2)
+    NRoots = SolveEquation (Definite_A, Definite_B, Definite_C, &Empty_X1, &Empty_X2);
+    if (!( CompareDouble (Empty_X1, Correct_X1)
+        && CompareDouble (Empty_X2, Correct_X2)
         && NRoots == Correct_NRoots))
     {
         printf("Ошибка в тесте!\n"
