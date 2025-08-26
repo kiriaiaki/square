@@ -1,36 +1,50 @@
 #include "test.h"
 
-void Testing()
+void Testing ()
 {
-    // TODO: добавить больше тестов и структуры
-    OneTest( 1, -5,  6, 2, 3,  2);
-    OneTest( 1,  0, -4, 2, 2, -2);
+    Test tests [5] =
+    {
+        {.A = 345, .B = 2, .C = 12, .NSolve = ZERO_ROOTS, .X1 = 0, .X2 = 0},
+        {.A = 3, .B = 6, .C = 3, .NSolve = ONE_ROOT, .X1 = -1, .X2 = -1},
+        {.A = 1, .B = -5, .C = 6, .NSolve = TWO_ROOTS, .X1 = 3, .X2 = 2},
+        {.A = 0, .B = 0, .C = 0, .NSolve = INFINITE_ROOTS, .X1 = 0, .X2 = 0},
+        {.A = 0, .B = 0, .C = 4, .NSolve = IMPOSSIBLE_ROOTS, .X1 = 0, .X2 = 0},
+    };
+
+    const int len = sizeof(tests) / sizeof(tests[0]);
+
+    for (int i = 0; i < len; i++)
+    {
+        OneTest (tests[i]);
+    }
 }
 
-void OneTest(const double Definite_A, const double Definite_B, const double Definite_C,
-    const int Correct_NRoots, const double Correct_X1, const double Correct_X2)
+void OneTest (const Test test)
 {
     double Empty_X1 = 0, Empty_X2 = 0;
     QuantityRoots NRoots = NOT_INITIALIZED;
-    assert(isfinite(Definite_A));
-    assert(isfinite(Definite_B));
-    assert(isfinite(Definite_C));
-    assert(isfinite(Correct_X1));
-    assert(isfinite(Correct_X2));
-    NRoots = SolveEquation (Definite_A, Definite_B, Definite_C, &Empty_X1, &Empty_X2);
-    if (!( CompareDouble (Empty_X1, Correct_X1)
-        && CompareDouble (Empty_X2, Correct_X2)
-        && NRoots == Correct_NRoots))
+
+    assert (isfinite (test.A));
+    assert (isfinite (test.B));
+    assert (isfinite (test.C));
+    assert (isfinite (test.X1));
+    assert (isfinite (test.X2));
+
+    NRoots = SolveEquation (test.A, test.B, test.C, &Empty_X1, &Empty_X2);
+
+    if (!( CompareDouble (Empty_X1, test.X1)
+        && CompareDouble (Empty_X2, test.X2)
+        && NRoots == test.NSolve))
     {
-        printf("Ошибка в тесте!\n"
+        printf ("\nОшибка в тесте!\n"
                "Коэффициенты уравнения: %lg, %lg, %lg \n"
                "Сколько должно было получиться корней: %d \n"
                "Сколько программа получила корней: %d \n"
                "Какие корни должны были получиться: %lg, %lg \n"
                "Какие корни получила программа: %lg, %lg \n\n",
-               Definite_A, Definite_B, Definite_C,
-               Correct_NRoots, NRoots,
-               Correct_X1, Correct_X2, Empty_X1, Empty_X2);
+               test.A, test.B, test.C,
+               test.NSolve, NRoots,
+               test.X1, test.X2, Empty_X1, Empty_X2);
     }
 
 }

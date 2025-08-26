@@ -6,7 +6,8 @@
 
 #include "auxiliary_function.h"
 
-enum QuantityRoots {
+enum QuantityRoots
+{
     ZERO_ROOTS = 0,
     ONE_ROOT = 1,
     TWO_ROOTS = 2,

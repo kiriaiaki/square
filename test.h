@@ -7,7 +7,15 @@
 #include "solution.h"
 #include "auxiliary_function.h"
 
-void OneTest (const double Definite_A, const double Definite_B, const double Definite_C, const int Correct_NRoots, const double Correct_X1, const double Correct_X2);
+struct Test
+{
+    double A, B, C;
+    int NSolve;
+    double X1, X2;
+};
+
+void OneTest (Test test);
+
 void Testing ();
 
 #endif // TEST_H

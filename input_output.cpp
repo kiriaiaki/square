@@ -2,35 +2,42 @@
 
 int InputCoefficients (double* const A, double* const B, double* const C)
 {
-    assert(A != NULL);
-    assert(B != NULL);
-    assert(C != NULL);
+    assert (A != NULL);
+    assert (B != NULL);
+    assert (C != NULL);
+
     if (InputOnlyCoefficient (A, 'a') == EOF)
     {
         return EOF;
     }
+
     if (InputOnlyCoefficient (B, 'b') == EOF)
     {
         return EOF;
     }
+
     if (InputOnlyCoefficient (C, 'c') == EOF)
     {
         return EOF;
     }
+
     return SUCCESS;
 }
 
 int InputOnlyCoefficient (double* const Coefficient, const char Symbol)
 {
-    assert(Coefficient != NULL);
-    printf("%c: ", Symbol);
-    while (scanf("%lf", Coefficient) != 1)
+    assert (Coefficient != NULL);
+
+    printf ("%c: ", Symbol);
+
+    while (scanf ("%lf", Coefficient) != 1)
     {
         if (InputBufferClean () == EOF)
         {
             return EOF;
         }
-        printf("Можно вводить только цифры, попробуй ещё раз\n%c: ", Symbol);
+
+        printf ("Можно вводить только цифры, попробуй ещё раз\n%c: ", Symbol);
     }
     return SUCCESS;
 }
@@ -39,11 +46,13 @@ int InputBufferClean ()
 {
     while (1)
     {
-        int Symbol = getchar();
+        int Symbol = getchar ();
+
         if (Symbol == EOF)
         {
             return EOF;
         }
+
         else if (Symbol == (int)'\n')
         {
             return SUCCESS;
@@ -53,27 +62,30 @@ int InputBufferClean ()
 
 int InputIntentionChecked (int* const AnsUser)
 {
-    assert(AnsUser != NULL);
+    assert (AnsUser != NULL);
+
     while (1)
     {
-        if (scanf("%d", AnsUser) != 1)
+        if (scanf ("%d", AnsUser) != 1)
         {
             if (InputBufferClean () == EOF)
             {
                 return EOF;
             }
-            printf("Введи 0 или 1, попробуй ещё раз\n");
+
+            printf ("Введи 0 или 1, попробуй ещё раз\n");
         }
+
         else
         {
             if (*AnsUser == 1 || *AnsUser == 0)
             {
                 return SUCCESS;
             }
+
             else
             {
-                printf("Введи 0 или 1, попробуй ещё раз\n");
-
+                printf ("Введи 0 или 1, попробуй ещё раз\n");
             }
         }
     }
@@ -86,16 +98,18 @@ void PrintRoots (const QuantityRoots NSolve, const double X1, const double X2)
     {
         case TWO_ROOTS:
         {
-            assert(isfinite(X1));
-            assert(isfinite(X2));
-            printf("x1 = %lg;   x2 = %lg\n\n", X1, X2);
+            assert (isfinite (X1));
+            assert (isfinite (X2));
+
+            printf ("x1 = %lg;   x2 = %lg\n\n", X1, X2);
             break;
         }
         case ONE_ROOT:
         {
-            assert(isfinite(X1));
-            assert(CompareDouble(X1, X2));
-            printf("x1 = %lg\n\n", X1);
+            assert (isfinite (X1));
+            assert (CompareDouble (X1, X2));
+
+            printf ("x1 = %lg\n\n", X1);
             break;
         }
         case INFINITE_ROOTS:
@@ -110,24 +124,42 @@ void PrintNumberRoots (const QuantityRoots NSolve)
 {
     switch (NSolve)
     {
-        case INFINITE_ROOTS:   printf("\n Уравнение имеет бесконечно много корней!\n\n"); break;
-        case IMPOSSIBLE_ROOTS: printf("\n Уравнение невозможно!\n\n"); break;
-        case ONE_ROOT:         printf("\n Уравнение имеет одно решение!\n\n"); break;
-        case TWO_ROOTS:        printf("\n Уравнение имеет два решения!\n\n"); break;
-        case ZERO_ROOTS:       printf("\n Уравнение не имеет рациональных решений!\n\n"); break;
+        case INFINITE_ROOTS:
+            printf ("\n Уравнение имеет бесконечно много корней!\n\n");
+            break;
+
+        case IMPOSSIBLE_ROOTS:
+            printf ("\n Уравнение невозможно!\n\n");
+            break;
+
+        case ONE_ROOT:
+            printf ("\n Уравнение имеет одно решение!\n\n");
+            break;
+
+        case TWO_ROOTS:
+            printf ("\n Уравнение имеет два решения!\n\n");
+            break;
+
+        case ZERO_ROOTS:
+            printf ("\n Уравнение не имеет рациональных решений!\n\n");
+            break;
+
         case NOT_INITIALIZED:
-        default: break;
+
+        default:
+            break;
     }
 }
 
-int AskUserIntention(int* const AnsUser)
+int AskUserIntention (int* const AnsUser)
 {
-    assert(AnsUser != NULL);
-    printf(" Нажми 1, чтобы решить ёще уравнение или нажми 0, чтобы закончить\n");
+    assert (AnsUser != NULL);
+
     if (InputIntentionChecked (AnsUser) == EOF)
     {
         return EOF;
     }
+
     else
     {
         return SUCCESS;
