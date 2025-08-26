@@ -1,5 +1,6 @@
 #include "test.h"
 
+// Doxygen
 void Testing ()
 {
     Test tests [6] =

@@ -1,6 +1,7 @@
-#!/bin/bash
+CC := g++
+objects = main.o test.o input_output.o solution.o auxiliary_function.o
 
-DED_FLAGS="-D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
+DED_FLAGS := "-D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
           -Wc++14-compat -Wmissing-declarations -Wcast-align \
           -Wcast-qual -Wchar-subscripts -Wconversion -Wctor-dtor-privacy \
           -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security \
@@ -14,10 +15,12 @@ DED_FLAGS="-D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
           -fstack-protector -fstrict-overflow -fno-omit-frame-pointer \
           -Wlarger-than=8192 -fPIE -Werror=vla"
 
-g++ main.cpp -c $DED_FLAGS -o main.o
-g++ test.cpp -c $DED_FLAGS -o test.o
-g++ input_output.cpp -c $DED_FLAGS -o input_output.o
-g++ solution.cpp -c $DED_FLAGS -o solution.o
-g++ auxiliary_function.cpp -c $DED_FLAGS -o auxiliary_function.o
-g++ main.o test.o input_output.o solution.o auxiliary_function.o
-./a.out
+all: $(objects)
+	@$(CC) $^
+	@./a.out
+
+$(objects): %.o: %.cpp
+	@$(CC) -c $^ $(DED_FLAGS) -o $@
+
+clean:
+	rm *.o
