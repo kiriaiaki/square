@@ -1,5 +1,8 @@
 CC := g++
-objects = main.o test.o input_output.o solution.o auxiliary_function.o
+BUILD_DIR := build
+SRC_DIR := src
+
+objects = $(BUILD_DIR)/main.o $(BUILD_DIR)/test.o $(BUILD_DIR)/input_output.o $(BUILD_DIR)/solution.o $(BUILD_DIR)/auxiliary_function.o
 
 DED_FLAGS := "-D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
           -Wc++14-compat -Wmissing-declarations -Wcast-align \
@@ -16,12 +19,17 @@ DED_FLAGS := "-D_DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ \
           -Wlarger-than=8192 -fPIE -Werror=vla"
 
 
-all: $(objects)
-	@$(CC) $^
-	@./a.out
 
-$(objects): %.o: %.cpp
-	@$(CC) -c $^ $(DED_FLAGS) -o $@
+all: create_bld_fldr $(objects)
+	@$(CC) $(objects) -o $(BUILD_DIR)/square.out
+	@cd $(BUILD_DIR) && ./square.out
+
+create_bld_fldr:
+	@mkdir -p $(BUILD_DIR)
+
+# -I нужен для того, чтобы указать путь до хедеров
+$(objects): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(CC) -I include -c $^ $(DED_FLAGS) -o $@
 
 clean:
-	@rm *.o && rm *.out
+	@rm -rf build

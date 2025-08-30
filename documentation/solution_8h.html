@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Файл include/solution.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('solution_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл solution.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Заголовочный файл с функциями решения квадратного уравнения  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="auxiliary__function_8h_source.html">auxiliary_function.h</a>&quot;</code><br />
+</div>
+<p><a href="solution_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:a8c513841ecb2d4c2a61c9731cbb65bb2" id="r_a8c513841ecb2d4c2a61c9731cbb65bb2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a> { <br />
+&#160;&#160;<a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2a52da2ea29bc7f0697300ec26acb69715">ZERO_ROOTS</a> = 0
+, <a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2a6700c0f6efd23571cb22aefd2510b1cf">ONE_ROOT</a> = 1
+, <a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2a876622d3c0b008da13a3685c64714e81">TWO_ROOTS</a> = 2
+, <a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2aa8e8d18b2a4bb297be3e39d332e146bb">INFINITE_ROOTS</a> = -1
+, <br />
+&#160;&#160;<a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2af47f869b7bf0367aa9639be4ef062f02">IMPOSSIBLE_ROOTS</a> = -2
+, <a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2a5b2b878895a108b84dc5e2f237d72ef1">NOT_INITIALIZED</a> = -3
+<br />
+ }</td></tr>
+<tr class="memdesc:a8c513841ecb2d4c2a61c9731cbb65bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Набор возможного количества решений квадратного уравнения  <a href="#a8c513841ecb2d4c2a61c9731cbb65bb2">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a8cb7b6f334a7744cdc903faba3323f0d" id="r_a8cb7b6f334a7744cdc903faba3323f0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cb7b6f334a7744cdc903faba3323f0d">SolveSquareEquation</a> (const double A, const double B, const double C, double *const X1, double *const X2)</td></tr>
+<tr class="memdesc:a8cb7b6f334a7744cdc903faba3323f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функций для решения квадратного уравнения вида ax^2+bx+c=0, где коэффициенты a, b и c не равны нулю.  <br /></td></tr>
+<tr class="memitem:ad1b26ceb57dcf9cfd9b066fa8c99d6e9" id="r_ad1b26ceb57dcf9cfd9b066fa8c99d6e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b26ceb57dcf9cfd9b066fa8c99d6e9">SolveEquation</a> (const double A, const double B, const double C, double *const X1, double *const X2)</td></tr>
+<tr class="memdesc:ad1b26ceb57dcf9cfd9b066fa8c99d6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функций для решения квадратного уравнения вида ax^2+bx+c=0.  <br /></td></tr>
+<tr class="memitem:aa786ed13959f51f728ec1e94e8f6f578" id="r_aa786ed13959f51f728ec1e94e8f6f578"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa786ed13959f51f728ec1e94e8f6f578">SolveLinearEquation</a> (const double B, const double C, double *const X1, double *const X2)</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Заголовочный файл с функциями решения квадратного уравнения </p>
+<dl class="section author"><dt>Автор</dt><dd><a href="#" onclick="location.href='mai'+'lto:'+'kir'+'ia'+'iak'+'i@'+'dom'+'ai'+'n.c'+'om'; return false;">kiria<span class="obfuscator">.nosp@m.</span>iaki<span class="obfuscator">.nosp@m.</span>@doma<span class="obfuscator">.nosp@m.</span>in.c<span class="obfuscator">.nosp@m.</span>om</a> </dd></dl>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="a8c513841ecb2d4c2a61c9731cbb65bb2" name="a8c513841ecb2d4c2a61c9731cbb65bb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c513841ecb2d4c2a61c9731cbb65bb2">&#9670;&#160;</a></span>QuantityRoots</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Набор возможного количества решений квадратного уравнения </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2a52da2ea29bc7f0697300ec26acb69715" name="a8c513841ecb2d4c2a61c9731cbb65bb2a52da2ea29bc7f0697300ec26acb69715"></a>ZERO_ROOTS&#160;</td><td class="fielddoc"><p>Указывает, что уравнение не имеет решений в рациональных числах </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2a6700c0f6efd23571cb22aefd2510b1cf" name="a8c513841ecb2d4c2a61c9731cbb65bb2a6700c0f6efd23571cb22aefd2510b1cf"></a>ONE_ROOT&#160;</td><td class="fielddoc"><p>Указывает, что уравнение имеет один рациональный корень </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2a876622d3c0b008da13a3685c64714e81" name="a8c513841ecb2d4c2a61c9731cbb65bb2a876622d3c0b008da13a3685c64714e81"></a>TWO_ROOTS&#160;</td><td class="fielddoc"><p>Указывает, что уравнение имеет два рациональных корня </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2aa8e8d18b2a4bb297be3e39d332e146bb" name="a8c513841ecb2d4c2a61c9731cbb65bb2aa8e8d18b2a4bb297be3e39d332e146bb"></a>INFINITE_ROOTS&#160;</td><td class="fielddoc"><p>Указывает, что уравнение имеет бесконечно много решений </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2af47f869b7bf0367aa9639be4ef062f02" name="a8c513841ecb2d4c2a61c9731cbb65bb2af47f869b7bf0367aa9639be4ef062f02"></a>IMPOSSIBLE_ROOTS&#160;</td><td class="fielddoc"><p>Указывает, что уравнение невозможно </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8c513841ecb2d4c2a61c9731cbb65bb2a5b2b878895a108b84dc5e2f237d72ef1" name="a8c513841ecb2d4c2a61c9731cbb65bb2a5b2b878895a108b84dc5e2f237d72ef1"></a>NOT_INITIALIZED&#160;</td><td class="fielddoc"><p>Указывает, что переменная не проинициализирована </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ad1b26ceb57dcf9cfd9b066fa8c99d6e9" name="ad1b26ceb57dcf9cfd9b066fa8c99d6e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b26ceb57dcf9cfd9b066fa8c99d6e9">&#9670;&#160;</a></span>SolveEquation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a> SolveEquation </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>A</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>B</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>C</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функций для решения квадратного уравнения вида ax^2+bx+c=0. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>Параметр квадратного уравнения при x^2 </td></tr>
+    <tr><td class="paramname">B</td><td>Параметр квадратного уравнения при x </td></tr>
+    <tr><td class="paramname">C</td><td>Свободный член квадратного уравнения (при x^0) </td></tr>
+    <tr><td class="paramname">X1</td><td>Указатель на ячейку памяти, где хранится переменная X1 - первый корень квадратного уравнения </td></tr>
+    <tr><td class="paramname">X2</td><td>Указатель на ячейку памяти, где хранится переменная X2 - второй корень квадратного уравнения </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней квадратного уравнения </dd></dl>
+
+</div>
+</div>
+<a id="aa786ed13959f51f728ec1e94e8f6f578" name="aa786ed13959f51f728ec1e94e8f6f578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa786ed13959f51f728ec1e94e8f6f578">&#9670;&#160;</a></span>SolveLinearEquation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a> SolveLinearEquation </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>B</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>C</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">B</td><td>Параметр линейного уравнения при x </td></tr>
+    <tr><td class="paramname">C</td><td>Свободный член линейного уравнения (при x^0) </td></tr>
+    <tr><td class="paramname">X1</td><td>Указатель на ячейку памяти, где хранится переменная X1 - корень линейного уравнения </td></tr>
+    <tr><td class="paramname">X2</td><td>Указатель на ячейку памяти, где хранится переменная X2 - корень линейного уравнения (равен X1) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней линейного уравнения (данная функция всегда возвращает 1) </dd></dl>
+
+</div>
+</div>
+<a id="a8cb7b6f334a7744cdc903faba3323f0d" name="a8cb7b6f334a7744cdc903faba3323f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb7b6f334a7744cdc903faba3323f0d">&#9670;&#160;</a></span>SolveSquareEquation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8c513841ecb2d4c2a61c9731cbb65bb2">QuantityRoots</a> SolveSquareEquation </td>
+          <td>(</td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>A</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>B</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>C</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *const</td>          <td class="paramname"><span class="paramname"><em>X2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функций для решения квадратного уравнения вида ax^2+bx+c=0, где коэффициенты a, b и c не равны нулю. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>Параметр квадратного уравнения при x^2 </td></tr>
+    <tr><td class="paramname">B</td><td>Параметр квадратного уравнения при x </td></tr>
+    <tr><td class="paramname">C</td><td>Свободный член квадратного уравнения (при x^0) </td></tr>
+    <tr><td class="paramname">X1</td><td>Указатель на ячейку памяти, где хранится переменная X1 - первый корень квадратного уравнения </td></tr>
+    <tr><td class="paramname">X2</td><td>Указатель на ячейку памяти, где хранится переменная X2 - второй корень квадратного уравнения </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество корней квадратного уравнения </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="solution_8h.html">solution.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

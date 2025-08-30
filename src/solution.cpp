@@ -76,6 +76,6 @@ QuantityRoots SolveLinearEquation (const double B, const double C,
     assert (X2 != NULL);
 
     *X1 = *X2 = -C / B;
-    
+
     return ONE_ROOT;
 }
